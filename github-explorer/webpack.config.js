@@ -5,14 +5,14 @@ const isDevelopment = process.env.NODE_ENV !== 'production'; //verifica se o amb
 
 module.exports = {
     mode: isDevelopment? 'development' : 'production',
-    entry: path.resolve(__dirname, 'src', 'index.jsx'), //arquivo inicial da aplicação
+    entry: path.resolve(__dirname, 'src', 'index.tsx'), //arquivo inicial da aplicação
     devtool: isDevelopment? 'eval-source-map' : 'source-map', //gera um arquivo de mapeamento para o codigo
     output: {
         path: path.resolve(__dirname, 'public'), //caminho do arquivo de saida
         filename: 'bundle.js' //nome do arquivo de saida
     },
     resolve: {
-        extensions: ['.js', '.jsx'], //extensoes que o webpack vai entender
+        extensions: ['.js', '.jsx', '.ts', '.tsx'], //extensoes que o webpack vai entender
     },
     devServer: {
         static: {
@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [ //testa se o arquivo e jsx, se for, converte para js usando o babel
             {
-                test: /\.jsx$/, //expressao regular para identificar arquivos .jsx
+                test: /\.(t|j)sx$/, //expressao regular para identificar arquivos .jsx
                 exclude: /node_modules/, //excluindo a pasta node_modules
                 use: 'babel-loader' //usando o babel-loader para transpilar o codigo 
             },
