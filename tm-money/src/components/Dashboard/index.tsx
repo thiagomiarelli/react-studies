@@ -4,9 +4,9 @@ import { TransactionsTable } from "../TransactionsTable";
 
 export function Dashboard() {
     return (
-        <Container>
-            <Summary/>
-            <TransactionsTable/>
-        </Container>
+            <Container>
+                <Summary/>
+                <TransactionsTable/>
+            </Container>
     );
 }

@@ -2,13 +2,13 @@ import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container, TransactionTypeContainer, RadioBox} from './styles';
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
-import { api } from '../../services/api';
+import { useTransactions } from '../../hooks/useContext';
 interface NewTransactionModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
 }
 
-type TransactionType = 'income' | 'outcome';
+type TransactionType = 'income' | 'withdraw';
 
 export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
     
@@ -18,19 +18,23 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
     const [category, setCategory] = useState('');
 
 
+    const { createTransaction } = useTransactions();
 
-
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
-        const data = {
+        await createTransaction({
             title,
             amount,
             category,
             type
-        }
+        });
 
-        api.post ('/transactions', data)
+        setTitle('');
+        setAmount(0);
+        setCategory('');
+        setType('income');
+
         onRequestClose();
     }
 
@@ -69,8 +73,8 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
                 </RadioBox>
                 <RadioBox
                   type="button"
-                  onClick={() => setType("outcome")}
-                  isActive={type === 'outcome'}
+                  onClick={() => setType("withdraw")}
+                  isActive={type === 'withdraw'}
                   activeColor="red"
                 >
                     <ArrowCircleDown size={20}/>
