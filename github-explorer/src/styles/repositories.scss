@@ -1,0 +1,25 @@
+section.repository-list {
+    margin: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    h1 {
+        font-size: 48px;
+        margin-bottom: 16px;
+    }
+
+    ul {
+        list-style: none;
+        
+        li {
+         & + li {
+            margin-top: 16px;
+         }
+         
+         a {
+            color: gray;
+         }
+
+        };
+    }
+
+}
