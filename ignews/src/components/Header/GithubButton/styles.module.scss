@@ -1,0 +1,22 @@
+.githubButton{
+    background-color: var(--gray-shape);
+    border: 0px;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg{
+        margin-right: 1rem;
+    }
+
+    transition: filter 0.2s;
+
+    &:hover{
+        filter: brightness(0.9);
+    }
+
+}
