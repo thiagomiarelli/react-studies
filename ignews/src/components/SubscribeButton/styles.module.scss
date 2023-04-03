@@ -1,0 +1,14 @@
+.button{
+    background: var(--blue);
+    color: #fff;
+    border: 0;
+    padding: 0 2rem;
+    height: 3rem;
+    border-radius: 0.25rem;
+    transition: filter 0.2s;
+    font-size: 1rem;
+    font-weight: 600;
+    &:hover {
+        filter: brightness(0.9);
+    }
+}

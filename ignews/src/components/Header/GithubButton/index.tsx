@@ -19,4 +19,3 @@ export function GithubButton({ isLogged }: GithubButtonProps) {
         </button>
     )
 }
-œ
